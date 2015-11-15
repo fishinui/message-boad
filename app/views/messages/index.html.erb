@@ -4,33 +4,14 @@
     </div>
     
     <div class="panel-body">
-        <% @message.each do |message| %>
+        <% @messages.each do |message| %>
           <span class="label label-info"><%= message.name %></span>
           <%= message.body %>
-          <br>
-        <% end %>  
+          (<%= link_to "edit" ,edit_message_path(message) %>)
+        <br>
+ <% end %>  
     </div>
 </div>
 
+<%= render 'form' %>
 
-<%= form_for(Message.new) do |f| %>
-<div class="form-horizontal">
-  <div class="form-group">
-       <label class="col-xs-1 control-label">名前</label>
-           <div class="col-xs-11">
-        	<%= f.text_field :name, class: "form-control" %>
-           </div>
-   </div>
-   <div class="form-group">
-       <label class="col-xs-1 control-label">内容</label>  
-           <div class="col-xs-11">
-        	<%= f.text_area :body, class: "form-control"  %>
-           </div>
-   </div>
-   <div class="form-group">
-       <div class="col-xs-offset-1 col-xs-11">
-	      <%= f.submit class: "btn btn-sm btn-primary" %>
-	   </div>
-   </div>   
-<% end %>
-</div>
